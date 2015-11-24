@@ -49,5 +49,46 @@ public class UtilityTest {
 	@Test
 	public void intToBit_341_returns000000000000000101010101() {
 		assertEquals("000000000000000101010101", utility.intToBit(341));
-	}	
+	}
+	
+	@Test
+	public void hexToInt_0_returns0() {
+		assertEquals(0, utility.hexToInt("0"));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void hexToInt_1234567_throwsIllegalArgument() {
+		utility.hexToInt("1234567");
+	}
+	
+	@Test
+	public void hexToInt_emptyString_returns0() {
+		assertEquals(0, utility.hexToInt(""));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void hexToInt_12GM_throwsIllegalArgument() {
+		utility.hexToInt("12GM");
+	}
+	
+	@Test
+	public void hexToInt_5A_returns90() {
+		assertEquals(90, utility.hexToInt("5A"));
+	}
+	
+	@Test
+	public void hexToInt_93ACF2_returns9678066() {
+		assertEquals(9678066, utility.hexToInt("93ACF2"));
+	}
+	
+	@Test
+	public void intToHex_90_returns00005A() {
+		assertEquals("00005A", utility.intToHex(90));
+	}
+	
+	@Test
+	public void intToHex_9678066_returns93ACF2() {
+		assertEquals("93ACF2", utility.intToHex(9678066));
+	}
 }
