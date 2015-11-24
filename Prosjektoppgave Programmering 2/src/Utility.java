@@ -1,6 +1,6 @@
 
 public class Utility {
-		
+
 	private final int MAXIMUM_LENGTH_OF_BIT_STRING = 24;
 	private final int MAXIMUM_LENGTH_OF_HEX_STRING = 6;
 	private final String LEGAL_NUMBERS_BIT = "[01]+";
@@ -12,7 +12,7 @@ public class Utility {
 
 		if (stringToConvert.length() == 0) {
 			intToReturn = 0;
-		} else {
+		}else {
 			checkIfLegalLengthOfStrings(stringToConvert, MAXIMUM_LENGTH_OF_BIT_STRING);
 			checkForLegalNumbersAndLetters(stringToConvert, LEGAL_NUMBERS_BIT);
 			intToReturn = convertFromBitToInt(stringToConvert, intToReturn);
@@ -22,8 +22,8 @@ public class Utility {
 
 	private int convertFromBitToInt(String stringToConvert, int intToReturn) {
 		char[] numbers = stringToConvert.toCharArray();
-		for(int i = numbers.length - 1; i >= 0; i--) {
-			if(numbers[i] == '1') {
+		for (int i = numbers.length - 1; i >= 0; i--) {
+			if (numbers[i] == '1') {
 				intToReturn += Math.pow(2, numbers.length -i -1);
 			}
 		}
@@ -47,7 +47,7 @@ public class Utility {
 		for (int i = 0; i < MAXIMUM_LENGTH_OF_BIT_STRING; i++, intToConvert /= 2) {
 			stringBuilderToReturnReversed.append(intToConvert % 2);
 		}
-			
+
 		return stringBuilderToReturnReversed.reverse().toString();
 	}
 
@@ -56,7 +56,7 @@ public class Utility {
 
 		if (stringToConvert.length() == 0) {
 			intToReturn = 0;
-		} else {
+		}else {
 			checkIfLegalLengthOfStrings(stringToConvert, MAXIMUM_LENGTH_OF_HEX_STRING );
 			checkForLegalNumbersAndLetters(stringToConvert, LEGAL_NUMBERS_AND_LETTERS_HEX );
 			intToReturn = convertFromHexToInt(stringToConvert, intToReturn);
@@ -78,5 +78,25 @@ public class Utility {
 			stringBuilderToReturnReversed.append(HEX_DIGITS.charAt(intToConvert % 16));
 		}
 		return stringBuilderToReturnReversed.reverse().toString();
-	}	 
+	}
+
+	public String bitwiseAnd(String firstString, String secondString) {
+		checkForLegalNumbersAndLetters(firstString, LEGAL_NUMBERS_AND_LETTERS_HEX);
+		checkForLegalNumbersAndLetters(secondString, LEGAL_NUMBERS_AND_LETTERS_HEX);
+
+		return convertBitwiseAnd(firstString.toCharArray(), secondString.toCharArray());
+	}
+
+	private String convertBitwiseAnd(char [] firstStringToArray, char [] secondStringToArray) {
+		StringBuilder sb = new StringBuilder("");
+
+		for (int i = 0; i <= MAXIMUM_LENGTH_OF_BIT_STRING -1; i++) {
+			if (firstStringToArray[i] == '1' && secondStringToArray[i] == '1') {
+				sb.append(1);
+			}else {
+				sb.append("0");
+			}
+		}
+		return sb.toString();
+	}
 }
