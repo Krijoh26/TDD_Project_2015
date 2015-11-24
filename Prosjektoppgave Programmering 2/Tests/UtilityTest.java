@@ -98,7 +98,17 @@ public class UtilityTest {
 	}
 
 	@Test
-	public void bitwiseAnd_1111And1111000_returns0() {
+	public void bitwiseAnd_1111And1111000_returns1000() {
 		assertEquals("000000000000000000001000", utility.bitwiseAnd("000000000000000000001111", "000000000000000001111000"));
+	}
+	
+	@Test
+	public void bitwiseOr_110101000000110111001101And001000011110011101001111_returns() {
+		assertEquals("111101011110111111001111", utility.bitwiseOr("110101000000110111001101", "001000011110011101001111"));
+	}
+	
+	@Test
+	public void bitwiseOr_1111And1111000_returns() {
+		assertEquals("000000000000000001111111", utility.bitwiseOr("000000000000000000001111", "000000000000000001111000"));
 	}
 }

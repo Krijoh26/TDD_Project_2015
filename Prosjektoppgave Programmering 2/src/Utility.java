@@ -94,7 +94,27 @@ public class Utility {
 			if (firstStringToArray[i] == '1' && secondStringToArray[i] == '1') {
 				sb.append(1);
 			}else {
-				sb.append("0");
+				sb.append(0);
+			}
+		}
+		return sb.toString();
+	}
+
+	public String bitwiseOr(String firstString, String secondString) {
+		checkForLegalNumbersAndLetters(firstString, LEGAL_NUMBERS_AND_LETTERS_HEX);
+		checkForLegalNumbersAndLetters(secondString, LEGAL_NUMBERS_AND_LETTERS_HEX);
+
+		return convertBitwiseOr(firstString.toCharArray(), secondString.toCharArray());
+	}
+
+	private String convertBitwiseOr(char[] firstStringToArray, char[] secondStringToArray) {
+		StringBuilder sb = new StringBuilder("");
+
+		for (int i = 0; i <= MAXIMUM_LENGTH_OF_BIT_STRING -1; i++) {
+			if (firstStringToArray[i] == '1' || secondStringToArray[i] == '1') {
+				sb.append(1);
+			}else {
+				sb.append(0);
 			}
 		}
 		return sb.toString();
