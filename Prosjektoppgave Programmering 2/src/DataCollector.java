@@ -61,20 +61,20 @@ public class DataCollector {
 		return tokens;
 	} 
 
-	public void checkArguments(String string) {
-		if (string.length() != 58) {
+	public void checkArguments(String informationToCheck) {
+		if (informationToCheck.length() != 58) {
 			throw new IllegalArgumentException();
 		}
 	}
 
-	public String calculateBitwise(String operator, String first, String second) {
+	public String calculateBitwise(String operator, String firstBitString, String secondBitString) {
 		String stringToReturn = "";
 		if(operator.equals("1")) {
-			stringToReturn = utility.bitwiseAnd(first, second);
+			stringToReturn = utility.bitwiseAnd(firstBitString, secondBitString);
 		}
 
 		else if(operator.equals("2")) {
-			stringToReturn = utility.bitwiseOr(first, second);
+			stringToReturn = utility.bitwiseOr(firstBitString, secondBitString);
 		}
 		return stringToReturn;
 	}
@@ -89,13 +89,13 @@ public class DataCollector {
 	}
 
 	class Information {
-		private String operator, firstString, secondString, bitResult;
+		private String operator, firstBitString, secondBitString, bitResult;
 		private int intResult;
 
-		public Information(String operator, String firstString, String secondString, String bitResult, int intResult) {
+		public Information(String operator, String firstBitString, String secondBitString, String bitResult, int intResult) {
 			this.operator = operator;
-			this.firstString = firstString;
-			this.secondString = secondString;
+			this.firstBitString = firstBitString;
+			this.secondBitString = secondBitString;
 			this.bitResult = bitResult;
 			this.intResult = intResult;
 		}
@@ -104,12 +104,12 @@ public class DataCollector {
 			return operator;
 		}
 
-		public String getFirstString() {
-			return firstString;
+		public String getFirstBitString() {
+			return firstBitString;
 		}
 
-		public String getSecondString() {
-			return secondString;
+		public String getSecondBitString() {
+			return secondBitString;
 		}
 
 		public String getBitResult() {
